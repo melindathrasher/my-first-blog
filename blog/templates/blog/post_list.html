@@ -7,6 +7,16 @@
 		<body>
     <p>Hi there!</p>
     <p>It works!</p>
+    <br>
+    <div>
+    {% for post in posts %}
+    	<p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
+	{% endfor %}
+    </div>
+    <br>
+    <h3>Helpful Links</h3>
      <ul><li>
      	<a href="http://djangogirls.org">djangogirls</a> 
      </li><li>
