@@ -1,26 +1,14 @@
-<html>
-		<head>
-			<title>Melinda's Blog</title>
-		</head>
-		 <h1>Welcome to Melinda's Blog</h1> 
-		  <h2>All opinions are my own.</h2> 
-		<body>
-    <p>Hi there!</p>
-    <p>It works!</p>
-    <br>
-    <div>
+{% extends "blog/base.html" %}
+
+{% block content %}
     {% for post in posts %}
-    	<p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaks }}</p>
-	{% endfor %}
-    </div>
-    <br>
-    <h3>Helpful Links</h3>
-     <ul><li>
-     	<a href="http://djangogirls.org">djangogirls</a> 
-     </li><li>
-     	<a href="http://melindathrasher.wordpress.com">Melinda on wordpress</a> 
- 	</li></ul> 
-    	</body>
-</html>
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+<h1><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
